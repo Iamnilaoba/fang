@@ -30,7 +30,7 @@ screpy-redis分布式爬虫写法：
 
    要将一个`Scrapy`项目变成一个`Scrapy-redis`项目只需修改以下三点就可以了：
 
-   1. 将爬虫的类从`scrapy.Spider`变成`scrapy_redis.spiders.RedisSpider`；或者是从`scrapy.CrawlSpider`变成`scrapy_redis.spiders.RedisCrawlSpider`。
+   1. 将爬虫的类从`scrapy.Spider`变成`spiders.RedisSpider`；或者是从`scrapy.CrawlSpider`变成`scrapy_redis.spiders.RedisCrawlSpider`。
    2. 将爬虫中的`start_urls`删掉。增加一个`redis_key="xxx"`。这个`redis_key`是为了以后在`redis`中控制爬虫启动的。爬虫的第一个url，就是在redis中通过这个发送出去的。
    3. 在配置文件中增加如下配置：
 
@@ -86,4 +86,5 @@ screpy-redis分布式爬虫写法：
 
 8. 爬虫工作
 
-   在`Redis`服务器上，推入一个开始的url链接：`redis-cli> lpush [redis_key] start_url`开始爬取
+   在`Redis` 服务器上，推入一个开始的url链接：`redis-cli> lpush [redis_key] start_url` 开始爬取
+备注：爬取到的数据会存放在Redis的数据库中
